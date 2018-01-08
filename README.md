@@ -7,6 +7,11 @@
 - express interest as a potential user (publicly visible as a +1 for that register)
 - provide contact details & service description/link/name to GOV.UK Registers Team (not public)
 
+**so that:**
+- users can have input into which registers are prioritised next
+- data owners can see the level of interest in register datasets they own
+- we can stay in touch with users interested in a given register when it makes progress, if they want us to
+
 ## Licence
 
 Unless stated otherwise, the codebase is released under [the MIT licence](./LICENSE).
