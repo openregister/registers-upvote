@@ -1,8 +1,19 @@
 - content_for :page_title, "GOV.UK Registers Upvote - #{@page_title}"
 
+- content_for :homepage_url, root_path
+
 - content_for :head do
   = stylesheet_link_tag 'application'
   = csrf_meta_tags
+
+- content_for :content do
+  %main{role: 'main'}
+    #content
+      - if flash.any?
+        - flash.each do |key, value|
+          %div{class: "flash #{key}"}
+            = value
+      = yield
 
 - content_for :body_end do
   = javascript_include_tag 'application'

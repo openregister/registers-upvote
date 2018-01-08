@@ -52,3 +52,46 @@
 @import "elements/phase-banner";                  // Alpha and beta banners and tags
 @import "elements/components";                    // GOV.UK prefixed styles - blue highlighted box
 @import "elements/shame";                         // Hacks and workarounds that will go away eventually
+
+table {
+  thead th {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  tbody td {
+    font-size: 16px;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+a:visited {
+  color: $govuk-blue;
+}
+
+.flash {
+  background-color: $grey-1;
+  color: $white;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: $gutter-half 0;
+  padding: $gutter-half;
+
+  @include media(tablet) {
+    font-size: 19px;
+    line-height: 1.31579;
+    margin-top: 40px;
+  }
+
+  &.error {
+    background-color: $red;
+  }
+
+  &.notice {
+    background-color: $turquoise;
+  }
+}

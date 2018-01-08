@@ -1,0 +1,21 @@
+.grid-row
+  .column-full
+    %h1.heading-large Registers
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th
+          %th
+
+      %tbody
+        - @registers.each do |register|
+          %tr
+            %td= register.name
+            %td= link_to 'Edit', edit_register_path(register)
+            %td= link_to 'Destroy', register, method: :delete, data: { confirm: 'Are you sure?' }
+
+    %br
+
+    = link_to 'New Register', new_register_path
