@@ -7,6 +7,27 @@
 - express interest as a potential user (publicly visible as a +1 for that register)
 - provide contact details & service description/link/name to GOV.UK Registers Team (not public)
 
+## Setting up development environment
+
+Install gems
+
+```
+bundle install
+```
+
+Setup database
+
+```
+rake db:create
+rake db:migrate
+```
+
+Run the application
+
+```
+rails server
+```
+
 ## Licence
 
 Unless stated otherwise, the codebase is released under [the MIT licence](./LICENSE).
