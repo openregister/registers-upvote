@@ -1,7 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+['Vehicle make', 'Vehicle fuel type', 'Vehicle category', 'UK', 'School Wales', 'Register office', 'Public holiday dates in the UK', 'Police station', 'Police force', 'Jobcentre', 'Higher education establishment', 'GP practice', 'Government website', 'Further education establishment', 'Foreign Office posts', 'Food authority', 'Fire station', 'Fire authority', 'Family mediator', 'Dental practice', 'Court and tribunal', 'Counting rules for reported crimes', 'Company', 'Civil marriage and civil partnership venue', 'Charity', 'Authorised Individual Savings Account manager', 'Apprentice assessment organisation', 'Vehicle colour', 'Green deal certification body', 'Clinical commissioning group'].each do |register|
+  Register.create(name: register)
+end

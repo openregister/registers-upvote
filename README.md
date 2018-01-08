@@ -22,6 +22,12 @@ rake db:create
 rake db:migrate
 ```
 
+Add some data
+
+```
+rails db:seed
+```
+
 Run the application
 
 ```
