@@ -6,15 +6,15 @@
       %thead
         %tr
           %th Name
-          %th
+          %th Votes
           %th
 
       %tbody
         - @registers.each do |register|
           %tr
             %td= register.name
-            %td= link_to 'Edit', edit_register_path(register)
-            %td= link_to 'Destroy', register, method: :delete, data: { confirm: 'Are you sure?' }
+            %td= register.votes.count
+            %td= button_to '+1', upvote_register_path(register), method: :post
 
     %br
 

@@ -1,5 +1,5 @@
 class RegistersController < ApplicationController
-  before_action :set_register, only: [:edit, :update, :destroy]
+  before_action :set_register, only: [:edit, :update, :destroy, :upvote]
 
   def index
     @registers = Register.order(:name)
@@ -32,6 +32,11 @@ class RegistersController < ApplicationController
   def destroy
     @register.destroy
     redirect_to registers_path, notice: 'Register was successfully destroyed.'
+  end
+
+  def upvote
+    @register.votes.create
+    redirect_to registers_path, notice: 'Vote was successfully counted.'
   end
 
   private
