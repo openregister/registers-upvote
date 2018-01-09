@@ -46,7 +46,6 @@ $active-nav-color: #1d8feb;
   @include screen {
     background: $black;
     color: $white;
-    border-bottom: 10px solid $white;
   }
 }
 
@@ -56,11 +55,6 @@ $active-nav-color: #1d8feb;
   zoom: 1;
 
   padding: 8px 0;
-
-  @include screen {
-    border-bottom: 10px solid $mainstream-brand;
-    margin-bottom: -10px;
-  }
 }
 
 .header.header--full-width {
