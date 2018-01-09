@@ -1,3 +1,5 @@
+- @omit_header = true
+
 - content_for :page_title, "GOV.UK Registers Upvote - #{@page_title}"
 
 - content_for :homepage_url, root_path
@@ -5,6 +7,30 @@
 - content_for :head do
   = stylesheet_link_tag 'application'
   = csrf_meta_tags
+
+- content_for :after_header do
+  %header{class: "header #{current_page?(root_path) ? 'header--without-border' : ''}"}
+    .header__container
+      .header__brand
+        = link_to root_path do
+          %span.govuk-logo
+            = image_tag 'gov_uk_logotype_crown_invert_trans.png', height: 32, width: 36, class: 'govuk-logo__printable-crown'
+            /-
+            GOV.UK
+          /-
+          %span.header__title
+            Registers
+            %span.phase-banner Alpha
+
+      = check_box_tag 'show-menu', nil, false, class: 'header__navigation-toggle-checkbox', "aria-controls" => "navigation", "aria-expanded" => "false"
+      = label_tag 'show-menu', 'Menu', class: 'header__navigation-toggle'
+      %nav{id: "navigation", class: "header__navigation", "aria-label" => "Top Level Navigation", "aria-hidden" => "true"}
+        %ul
+          - if current_user
+            %li= link_to 'Sign out', signout_path
+          - else
+            %li= link_to "Register", register_path
+            %li= link_to "Sign in", signin_path
 
 - content_for :content do
   %main{role: 'main'}

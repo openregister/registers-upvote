@@ -1,0 +1,21 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    %div{class: 'error-summary', role: :alert, 'aria-labelledby' => 'error-summary-heading-example-1', tabindex: '-1'}
+      %h2.heading-medium.error-summary-heading= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul.error-summary-list
+        - @user.errors.each do |message|
+          %li= link_to_field_with_error(@user, message)
+
+  .form-group
+    = f.label :email, class: 'form-label'
+    = f.text_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :password, class: 'form-label'
+    = f.text_field :password, class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation, class: 'form-label'
+    = f.text_field :password_confirmation, class: 'form-control'
+
+  = f.submit 'Save', class: 'button'
