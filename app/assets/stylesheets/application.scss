@@ -57,6 +57,17 @@
 @import "phase-banner";
 @import "govuk-logo";
 @import "header";
+@import "subsections";
+
+.heading-xlarge {
+  @include media(tablet) {
+    margin-bottom: $gutter;
+  }
+}
+
+.lede {
+  color: $grey-1;
+}
 
 table {
   thead th {

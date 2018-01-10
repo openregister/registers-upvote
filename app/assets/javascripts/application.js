@@ -11,4 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
+//= require jquery
+//= require govuk/modules
+//= require modules/accordion-with-descriptions
+
+$(document).ready(function () {
+  GOVUK.modules.start();
+});

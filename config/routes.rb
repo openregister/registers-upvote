@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :registers, except: :show  do
-    member do
-      post 'upvote'
-    end
+    resource :vote, module: :registers
   end
 
   resources :users

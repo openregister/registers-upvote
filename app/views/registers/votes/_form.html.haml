@@ -1,0 +1,20 @@
+= form_for register.votes.new, url: register_vote_path(register), method: :post do |f|
+  .form-group
+    %fieldset
+      %legend
+        %p Why are you voting for this register?
+      .multiple-choice
+        = f.radio_button :interest, 'I am interested in this subject', checked: true, id: "vote_interested_in_#{index}"
+        = f.label "interested_in_#{index}", 'I am interested in this subject'
+      .multiple-choice
+        = f.radio_button :interest, :need_this, id: "vote_need_this_#{index}"
+        = f.label "need_this_#{index}", 'I need this data for my work'
+      .multiple-choice
+        = f.radio_button :interest, :have_this, id: "vote_have_this_#{index}"
+        = f.label "have_this_#{index}", 'I can provide some or all of this data'
+  .form-group
+    = f.label :email, 'Email address', class: 'form-label'
+    %span.form-hint This will only be used to update you on progress
+    = f.text_field :email, class: 'form-control', required: true, value: session[:user_email]
+  .form-group
+    = f.submit 'Vote', class: 'button'

@@ -34,11 +34,6 @@ class RegistersController < ApplicationController
     redirect_to registers_path, notice: 'Register was successfully destroyed.'
   end
 
-  def upvote
-    @register.votes.create
-    redirect_to registers_path, notice: 'Vote was successfully counted.'
-  end
-
   private
 
     def set_register
