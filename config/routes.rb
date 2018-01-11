@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'signin', to: 'sessions#new', as: 'signin'
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :registers, except: :show  do
+  resources :registers do
     resource :vote, module: :registers
   end
 

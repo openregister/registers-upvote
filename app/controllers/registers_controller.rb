@@ -1,5 +1,5 @@
 class RegistersController < ApplicationController
-  before_action :set_register, only: [:edit, :update, :destroy, :upvote]
+  before_action :set_register, only: [:edit, :update, :destroy, :show]
 
   def index
     @registers = Register.order(:name)
@@ -7,6 +7,10 @@ class RegistersController < ApplicationController
 
   def new
     @register = Register.new
+    @register.votes.build
+  end
+
+  def show
   end
 
   def edit
@@ -15,7 +19,7 @@ class RegistersController < ApplicationController
   def create
     @register = Register.new(register_params)
     if @register.save
-      redirect_to registers_path, notice: 'Register was successfully created.'
+      redirect_to register_path(@register), notice: 'Register was successfully created.'
     else
       render :new
     end
@@ -41,6 +45,6 @@ class RegistersController < ApplicationController
     end
 
     def register_params
-      params.require(:register).permit(:name)
+      params.require(:register).permit(:name, votes_attributes: [:id, :email, interest: []])
     end
 end
