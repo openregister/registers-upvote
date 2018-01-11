@@ -29,6 +29,6 @@
                 %p You already voted for this register.
                 %ul.list.list-bullet
                   %li see which registers are #{link_to 'live and in progress', 'https://registers.cloudapps.digital/registers', target: :blank}
-                  %li #{mail_to 'contact the Registers team', 'registersteam@digital.cabinet-office.gov.uk', target: :blank} for an update
+                  %li #{mail_to 'contact the Registers team', 'registers@digital.cabinet-office.gov.uk', target: :blank} for an update
               - else
                 = render partial: 'registers/votes/form', locals: { register: register, index: index }
