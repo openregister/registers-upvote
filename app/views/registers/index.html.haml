@@ -1,34 +1,23 @@
 .grid-row
-  .column-two-thirds
-    %h1.heading-xlarge Express interest in the Registers you need
-
-.grid-row
-  .column-two-thirds
-    %p.lede Directly influence which registers are worked on next by voting for the register you need.
-    %p Let us know that you are interested in a register, need a register for your work, or that you have all (or part) of the data to make a register.
-  .column-one-third
-    = link_to 'Suggest a new register', new_register_path, class: 'button'
-
-.grid-row
   .column-full
-    %div{class: "js-hidden", "data-module" => "accordion-with-descriptions"}
-      .subsection-wrapper
-        .subsection-wrapper__header
-          .subsection__header
-            %h2
-              Register name
-              %small.subsection__header-counter Vote
-        - @registers.each_with_index do |register, index|
-          .subsection.js-subsection
-            .subsection__header
-              %h2= register.name
-              %span.subsection__header-counter= register.votes.count
-              %span{class: "subsection__header-icon #{register.votes.map{|v|v.email}.include?(session[:user_email]) ? 'voted' : ''}"}
-            %div{class: 'subsection__content js-subsection-content', id: "subsection_content_#{index}"}
-              - if register.votes.map{|v|v.email}.include?(session[:user_email])
-                %p You already voted for this register.
-                %ul.list.list-bullet
-                  %li see which registers are #{link_to 'live and in progress', 'https://registers.cloudapps.digital/registers', target: :blank}
-                  %li #{mail_to 'contact the Registers team', 'registers@digital.cabinet-office.gov.uk', target: :blank} for an update
+    %h1.heading-xlarge Registers
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th.text-centered Votes
+          %th.text-centered Approved
+          %th
+
+      %tbody
+        - @registers.each do |register|
+          %tr
+            %td= register.name
+            %td.text-centered= register.votes.count
+            %td.text-centered
+              - if register.approved
+                = image_tag '002-checked.svg', width: 20
               - else
-                = render partial: 'registers/votes/form', locals: { register: register, index: index }
+                = image_tag '001-cancel.svg', width: 20
+            %td= button_to 'Approve', approve_register_path(register), method: :post

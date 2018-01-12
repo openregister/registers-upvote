@@ -9,7 +9,7 @@ class Registers::VotesController < ApplicationController
     @vote = @register.votes.new(vote_params)
     if @vote.save
       session[:user_email] = @vote.email
-      redirect_to registers_path, notice: 'Your vote has been counted, thank you for your interest'
+      redirect_to root_path, notice: 'Your vote has been counted, thank you for your interest'
     else
       render :new
     end

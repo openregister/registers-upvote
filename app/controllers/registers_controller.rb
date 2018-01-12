@@ -1,8 +1,8 @@
 class RegistersController < ApplicationController
-  before_action :set_register, only: [:edit, :update, :destroy, :show]
+  before_action :set_register, only: [:edit, :update, :destroy, :show, :approve]
 
   def index
-    @registers = Register.order(:name)
+    @registers = Register.order(:approved)
   end
 
   def new
@@ -16,10 +16,16 @@ class RegistersController < ApplicationController
   def edit
   end
 
+  def approve
+    @register.update_attributes(approved: :true)
+    redirect_to registers_path, notice: 'Register has been approved'
+  end
+
   def create
     @register = Register.new(register_params)
     if @register.save
-      redirect_to register_path(@register), notice: 'Register was successfully created.'
+      redirect_to @register
+      # TODO: RegisterMailer.suggested_register(@register).deliver_now
     else
       render :new
     end
@@ -27,7 +33,7 @@ class RegistersController < ApplicationController
 
   def update
     if @register.update(register_params)
-      redirect_to registers_path, notice: 'Register was successfully updated.'
+      redirect_to root_path, notice: 'Register was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +41,7 @@ class RegistersController < ApplicationController
 
   def destroy
     @register.destroy
-    redirect_to registers_path, notice: 'Register was successfully destroyed.'
+    redirect_to root_path, notice: 'Register was successfully destroyed.'
   end
 
   private
@@ -45,6 +51,6 @@ class RegistersController < ApplicationController
     end
 
     def register_params
-      params.require(:register).permit(:name, votes_attributes: [:id, :email, interest: []])
+      params.require(:register).permit(:name, :approved, votes_attributes: [:id, :email, interest: []])
     end
 end
