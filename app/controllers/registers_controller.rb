@@ -25,7 +25,7 @@ class RegistersController < ApplicationController
     @register = Register.new(register_params)
     if @register.save
       redirect_to @register
-      # TODO: RegisterMailer.suggested_register(@register).deliver_now
+      RegisterMailer.suggest_register(@register).deliver_now
     else
       render :new
     end
