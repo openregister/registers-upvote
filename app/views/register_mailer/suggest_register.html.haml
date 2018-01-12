@@ -3,4 +3,9 @@
   %strong
     = @register.name
 
+%p
+  Why has this been suggested?
+  %strong
+    = @register.votes.first.interest
+
 %p= link_to 'Approve now', edit_register_url(@register)

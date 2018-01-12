@@ -2,7 +2,7 @@ class RegistersController < ApplicationController
   before_action :set_register, only: [:edit, :update, :destroy, :show, :approve]
 
   def index
-    @registers = Register.order(:approved)
+    @registers = Register.order(:approved, created_at: :desc)
   end
 
   def new
@@ -51,6 +51,6 @@ class RegistersController < ApplicationController
     end
 
     def register_params
-      params.require(:register).permit(:name, :approved, votes_attributes: [:id, :email, interest: []])
+      params.require(:register).permit(:name, :approved, votes_attributes: [:id, :email, :interest])
     end
 end
