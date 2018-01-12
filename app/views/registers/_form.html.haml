@@ -17,20 +17,20 @@
         = f.check_box :approved
         = f.label :approved, 'Approve'
   - else
-    = f.fields_for :votes, @register.votes.first do |ff|
+    = f.fields_for :votes do |ff|
       .form-group
         %fieldset
           %legend
             %p Why are you suggesting for this register?
           .multiple-choice
-            = ff.radio_button :interest, 'I am interested in this subject', checked: true, id: "interested_in"
-            = ff.label :interest, 'I am interested in this subject'
+            = ff.radio_button :interest, :interested_in, checked: true
+            = ff.label :interest, 'I am interested in this subject', for: "register_votes_attributes_0_interest_interested_in"
           .multiple-choice
-            = ff.radio_button :interest, :need_this, id: "need_this"
-            = ff.label "vote_need_this", 'I need this data for my work'
+            = ff.radio_button :interest, :need_this
+            = ff.label "vote_need_this", 'I need this data for my work', for: "register_votes_attributes_0_interest_need_this"
           .multiple-choice
-            = ff.radio_button :interest, :have_this, id: "have_this"
-            = ff.label "vote_have_this", 'I can provide some or all of this data'
+            = ff.radio_button :interest, :have_this
+            = ff.label "vote_have_this", 'I can provide some or all of this data', for: "register_votes_attributes_0_interest_have_this"
       .form-group
         = ff.label :email, 'Email address', class: 'form-label'
         %span.form-hint This will only be used to update you on progress
