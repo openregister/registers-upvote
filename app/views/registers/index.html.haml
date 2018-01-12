@@ -20,4 +20,5 @@
                 = image_tag '002-checked.svg', width: 20
               - else
                 = image_tag '001-cancel.svg', width: 20
-            %td= button_to 'Approve', approve_register_path(register), method: :post
+            %td
+              = button_to 'Approve', approve_register_path(register), method: :post, disabled: register.approved, class: 'button'
